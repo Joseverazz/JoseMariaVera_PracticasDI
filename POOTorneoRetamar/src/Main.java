@@ -16,6 +16,7 @@ public class Main  {
     // new Calendario(12);
         public static void main(String[] args) throws IOException, ClassNotFoundException {
             FEquipos fe = new FEquipos(URLDecoder.decode(Source.FICHERO, StandardCharsets.UTF_8));
+            if (fe.leer() == null) anadirEquipos(fe);
             int op;
             while (true) {
                 in.cls();
@@ -24,7 +25,7 @@ public class Main  {
                 in.cls();
                 if (op == 7) break;
                 switch (op) {
-                    case 1: anadirEquipo(fe);break;
+                    case 1: anadirEquipos(fe);break;
                     case 2: listarEquipos(fe);break;
                     case 3: generarPartidos();break;
                     case 4: generarCalendario();break;
@@ -156,17 +157,17 @@ public class Main  {
             {
                 lAux.add(ar);
             }
-            System.out.println("+----------+-----------------+-----+-----+-----+-----+-----+-----+--------+");
-            System.out.println("| Posicion | Nombre          | PJ  | PG  | PP  | PE  | GC  | GF  | Puntos |");
-            System.out.println("+----------+-----------------+-----+-----+-----+-----+-----+-----+--------+");
+            System.out.println("+----------+-----------------+-----+-----+-----+-----+-----+-----+--------+--------+--------+");
+            System.out.println("| Posicion | Nombre          | PJ  | PG  | PP  | PE  | GC  | GF  | Puntos | JHier  | Jnohie |");
+            System.out.println("+----------+-----------------+-----+-----+-----+-----+-----+-----+--------+--------+--------+");
             for (int i = 0; i < lAux.size(); i++) {
                 System.out.printf("| %8d ",i+1);
                 System.out.print(lAux.get(i)+"\n");
             }
-            System.out.println("+----------+-----------------+-----+-----+-----+-----+-----+-----+--------+");
+            System.out.println("+----------+-----------------+-----+-----+-----+-----+-----+-----+--------+--------+--------+");
         }
 
-        private static void anadirEquipo(FEquipos fe) throws IOException, ClassNotFoundException {
+        private static void anadirEquipos(FEquipos fe) throws IOException, ClassNotFoundException {
         for (int i = 0; i < NUMERO_EQUIPOS; i++) {
             String nombre = in.leerString("Nombre del equipo "+i+": ");
 
@@ -380,7 +381,7 @@ public class Main  {
         }
         /* **********************************/
         static void menu(){
-            System.out.println("GESTION SIMPLIFICADA DE ALMACEN");
+            System.out.println("TORNEO DE FUTBOL RETAMAR ");
             System.out.println("===========================================");
             System.out.println("1. Añadir equipo");
             System.out.println("2. Listar equipos");
