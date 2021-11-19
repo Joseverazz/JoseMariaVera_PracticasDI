@@ -106,7 +106,7 @@
             <TextArea fx:id="textPedidos" prefHeight="200.0" prefWidth="300.0" />
          </children>
       </HBox>
-      <Label fx:id="labelPrecio" alignment="CENTER" text="Precio acumulado: 0">
+      <Label fx:id="labelPrecio" alignment="CENTER" disable="true" text="Precio acumulado: 0">
          <VBox.margin>
             <Insets top="30.0" />
          </VBox.margin>

@@ -1,4 +1,4 @@
-package com.example.josemariavera;
+package com.example.t4_elementos;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PedidosApplication extends Application {
+public class ElementosApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(PedidosApplication.class.getResource("pedidos.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(ElementosApp.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Hello!");
         stage.setScene(scene);
