@@ -10,10 +10,15 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -33,7 +38,7 @@ public class ListasController implements Initializable {
     private ComboBox combo;
 
     @FXML
-    private Button btnComprobar;
+    private Button btnComprobar, btnDetalle;
 
     @FXML
     private ListView listView;
@@ -69,10 +74,32 @@ public class ListasController implements Initializable {
                 try {
                     InputStream inputStream = new URL(url).openStream();
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                    String respuesta = bufferedReader.readLine();
-                    JSONObject jsonGeneral = new JSONObject(respuesta);
-                    JSONArray arrayResultados = jsonGeneral.getJSONArray("results");
+                    //String respuesta = bufferedReader.readLine();
+                    //JSONObject jsonGeneral = new JSONObject(respuesta);
+                    // arrayResultados = jsonGeneral.getJSONArray("results");
                     //JSONObject objetoPelicula = arrayResultados.getJSONObject(12);
+                    String linea = "";
+                    StringBuffer stringBuffer = new StringBuffer();
+
+                    while ((linea=bufferedReader.readLine())!=null){
+                        stringBuffer.append(linea);
+                    }
+
+                    JSONObject jsonObject = new JSONObject(stringBuffer.toString());
+                    JSONArray arrayPeliculas = jsonObject.getJSONArray("results");
+
+                    for (int i = 0; i < arrayPeliculas.length(); i++) {
+                        JSONObject pelicula = arrayPeliculas.getJSONObject(i);
+                        int id = pelicula.getInt("id");
+                        String titulo = pelicula.getString("original_title");
+                        String descripcion = pelicula.getString("overview");
+                        String imagen = "https://image.tmdb.org/t/p/w500"+pelicula.getString("poster_path");
+                        Double popularidad = pelicula.getDouble("popularity");
+                        Pelicula peliculaActual = new Pelicula(id,titulo,descripcion,imagen,popularidad);
+                        listaPeliculas.add(peliculaActual);
+                    }
+
+                    /*
                     Pelicula pelicula;
                     for (int i = 0; i < arrayResultados.length(); i++)
                     {
@@ -85,7 +112,7 @@ public class ListasController implements Initializable {
                         pelicula = new Pelicula(id,titulo,descripcion,imagen,popularidad);
                         listaPeliculas.add(pelicula);
                     }
-
+                    */
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -96,11 +123,42 @@ public class ListasController implements Initializable {
 
     }
 
+    public void metodoContestar(String mensaje){
+        System.out.println(mensaje);
+    }
+
     private void acciones() {
         btnComprobar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 new Thread(tareaJson).start();
+            }
+        });
+        btnDetalle.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (listView.getSelectionModel().getSelectedIndex()<0){
+                    System.out.println("No hay nada");
+                }
+                else{
+                    Stage stage = new Stage();
+                    FXMLLoader loader = null;
+                    Parent root = null;
+                    DetalleController detalleController = null;
+                    try {
+                        loader = new FXMLLoader(getClass().getResource("detalle-view.fxml"));
+                        root = loader.load();
+                        detalleController = loader.getController();
+                        detalleController.comunicarPelicula((Pelicula) listView.getSelectionModel().getSelectedItem(),
+                                ListasController.this);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Scene scene = new Scene(root, 400, 400);
+                    stage.setScene(scene);
+                    stage.setTitle("Detalles");
+                    stage.show();
+                }
             }
         });
 

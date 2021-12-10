@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.example.apicoches.MenuController">
+  <tabs>
+    <Tab text="Seleccionador de coches ">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="373.0" prefWidth="600.0">
+               <children>
+                  <BorderPane prefHeight="372.0" prefWidth="600.0">
+                     <left>
+                        <HBox prefHeight="335.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox prefHeight="318.0" prefWidth="300.0">
+                                 <children>
+                                    <Label text="COCHE" fx:id="labelCoche">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="MARCA" />
+                                    <ChoiceBox fx:id="choiceMarca" prefWidth="150.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </ChoiceBox>
+                                    <Label text="MODELO" />
+                                    <ChoiceBox fx:id="choiceModelo" prefWidth="150.0" disable="true"/>
+                                 </children>
+                              </VBox>
+                              <ImageView fx:id="imagen" fitHeight="347.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </HBox>
+                     </left>
+                     <bottom>
+                        <Button fx:id="btnSeleccionar" disable="true" mnemonicParsing="false" text="Mas detalles" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Comparador de coches ">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <BorderPane prefHeight="373.0" prefWidth="600.0">
+                     <center>
+                        <HBox prefHeight="296.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <VBox prefHeight="372.0" prefWidth="300.0">
+                                 <children>
+                                    <Label text="COCHE 1" fx:id="labelCoche1">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="MARCA" />
+                                    <ChoiceBox fx:id="choiceMarca1" prefWidth="150.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </ChoiceBox>
+                                    <Label text="MODELO" />
+                                    <ChoiceBox fx:id="choiceModelo1" prefWidth="150.0"  disable="true"/>
+                                    <ImageView fx:id="imagen1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="372.0" prefWidth="300.0">
+                                 <children>
+                                    <Label text="COCHE 2" fx:id="labelCoche2">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="MARCA" />
+                                    <ChoiceBox fx:id="choiceMarca2" prefWidth="150.0">
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </ChoiceBox>
+                                    <Label text="MODELO" />
+                                    <ChoiceBox fx:id="choiceModelo2" prefWidth="150.0"  disable="true"/>
+                                    <ImageView fx:id="imagen2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </center>
+                     <bottom>
+                        <Button fx:id="btnComparar" disable="true" mnemonicParsing="false" text="Comparar coches " BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
