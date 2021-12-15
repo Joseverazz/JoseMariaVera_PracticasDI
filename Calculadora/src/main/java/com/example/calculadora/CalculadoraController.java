@@ -34,15 +34,10 @@ public class CalculadoraController implements Initializable,EventHandler<ActionE
     @FXML
     HBox boxRegistro;
 
-    String operacion = "           ";
+    String operacion = "";
 
-    /*
-    @FXML
-    private Button bCero,bUno,bDos,bTres, bCuatro, bCinco,bSeis,bSiete,bOcho,bNueve,
-            bBorrar,bMasMenos, bPorcentaje,bMultiplicacion,bSuma,bResta,bDivision,bIgual;
+    double n1;
 
-    private final Button[] bNumeros= {bCero,bUno,bDos,bTres, bCuatro, bCinco,bSeis,bSiete,bOcho,bNueve};
-*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         instancias();
@@ -140,26 +135,29 @@ public class CalculadoraController implements Initializable,EventHandler<ActionE
         else if(bAux.getText().equals("+")|| bAux.getText().equals("-")||
                 bAux.getText().equals("x")|| bAux.getText().equals("/")||
                 bAux.getText().equals("%") ) {
-            operacion = tResultado.getText()+bAux.getText();
+            operacion = bAux.getText();
+            n1 = Double.parseDouble(tResultado.getText());
             tResultado.setText("");
         }
         else if (bAux.getText().equals("sen(x)")||
                 bAux.getText().equals("cos(x)")|| bAux.getText().equals("tan(x)")||
                 bAux.getText().equals("log(x)")){
-            operacion = tResultado.getText()+bAux.getText();
+            operacion = bAux.getText();
+            n1 = Double.parseDouble(tResultado.getText());
             String op = operacion2();
-            textRegistro.appendText(bAux.getText().substring(0, operacion.length() - 3)+tResultado.getText()+")="+op+"\n");
+            textRegistro.appendText(bAux.getText().substring(0, operacion.length() - 3)+tResultado.getText()+")="+Double.parseDouble(op)*100/100.0+"\n");
             tResultado.setText(op);
         }
         else if (bAux.getText().equals("x^2")){
-            operacion = tResultado.getText()+bAux.getText();
+            operacion = bAux.getText();
+            n1 = Double.parseDouble(tResultado.getText());
             String op = operacion2();
             textRegistro.appendText(tResultado.getText()+"^2="+op+"\n");
             tResultado.setText(op);
         }
         else if (bAux.getText().equals("=")){
             String op = operacion();
-            textRegistro.appendText(operacion+tResultado.getText()+"="+op+"\n");
+            textRegistro.appendText(n1+operacion+tResultado.getText()+"="+Double.parseDouble(op)*100/100.0+"\n");
             tResultado.setText(op);
         }
         else {
@@ -170,36 +168,36 @@ public class CalculadoraController implements Initializable,EventHandler<ActionE
     }
 
     private String operacion() {
-        int resultado = Integer.parseInt(operacion.substring(0,operacion.length()-1));
-                //Integer.parseInt(tResultado.getText());
-        if (operacion.charAt(operacion.length()-1) == '+')
-            return String.valueOf(resultado+Integer.parseInt(tResultado.getText()));
-        else if (operacion.charAt(operacion.length()-1) == '-')
-            return String.valueOf(resultado-Integer.parseInt(tResultado.getText()));
-        else if (operacion.charAt(operacion.length()-1) == 'x')
-            return String.valueOf(resultado*Integer.parseInt(tResultado.getText()));
-        else if (operacion.charAt(operacion.length()-1) == '%')
-            return String.valueOf(resultado%Integer.parseInt(tResultado.getText()));
+        if (operacion.equals("+"))
+            return String.valueOf(n1+Double.parseDouble(tResultado.getText()));
+        else if (operacion.equals("-"))
+            return String.valueOf(n1-Double.parseDouble(tResultado.getText()));
+        else if (operacion.equals("x"))
+            return String.valueOf(n1*Double.parseDouble(tResultado.getText()));
+        else if (operacion.equals("%"))
+            return String.valueOf(n1%Double.parseDouble(tResultado.getText()));
+        else if (operacion.equals("/"))
+            return String.valueOf(n1/Double.parseDouble(tResultado.getText()));
 
 
         return "";
     }
     private String operacion2() {
 
-        if (operacion.endsWith("sen(x)")) {
-            return String.valueOf(Math.sin(Integer.parseInt(operacion.substring(0, operacion.length() - 6))));
+        if (operacion.equals("sen(x)")) {
+            return String.valueOf(Math.sin(n1));
         }
-        else if (operacion.endsWith("cos(x)")){
-            return String.valueOf(Math.cos(Integer.parseInt(operacion.substring(0,operacion.length()-6))));
+        else if (operacion.equals("cos(x)")){
+            return String.valueOf(Math.cos(n1));
         }
-        else if (operacion.endsWith("tan(x)")){
-            return String.valueOf(Math.tan(Integer.parseInt(operacion.substring(0,operacion.length()-6))));
+        else if (operacion.equals("tan(x)")){
+            return String.valueOf(Math.tan(n1));
         }
-        else if (operacion.endsWith("log(x)")){
-            return String.valueOf(Math.log(Integer.parseInt(operacion.substring(0,operacion.length()-6))));
+        else if (operacion.equals("log(x)")){
+            return String.valueOf(Math.log(n1));
         }
-        else if (operacion.endsWith("x^2")){
-            return String.valueOf(Math.pow(Integer.parseInt(operacion.substring(0,operacion.length()-3)),2));
+        else if (operacion.equals("x^2")){
+            return String.valueOf(Math.pow(n1,2));
         }
         return "";
     }

@@ -10,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -21,7 +22,7 @@ public class DetalleController implements Initializable {
     Button btnComprar;
 
     @FXML
-    Label labelCoche, labelCaballos, labelModelo, labelFabricante, labelPrecio;
+    Label labelCoche, labelCaballos, labelModelo, labelFabricante, labelPrecio, precio;
 
     @FXML
     ImageView imagenCoche;
@@ -32,13 +33,23 @@ public class DetalleController implements Initializable {
     @FXML
     VBox financiado, noFinanciado;
 
+    @FXML
+    BorderPane border;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         btnComprar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                financiado.setVisible(true);
+                noFinanciado.setVisible(true);
                 if(checkFinanciado.isSelected()){
-
+                    border.rightProperty().setValue(financiado);
+                    precio.setText(String.valueOf(Math.round(Double.parseDouble(labelPrecio.getText())/60)*100/100.0));
+                }
+                else{
+                    border.rightProperty().setValue(noFinanciado);
                 }
             }
         });

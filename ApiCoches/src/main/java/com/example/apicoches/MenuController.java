@@ -212,6 +212,28 @@ public class MenuController implements Initializable {
                 stage.show();
             }
         });
+        btnComparar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Stage stage = new Stage();
+                FXMLLoader loader = null;
+                Parent root = null;
+                CompararController compararController = null;
+                try {
+                    loader = new FXMLLoader(getClass().getResource("comparar-view.fxml"));
+                    root = loader.load();
+                    compararController = loader.getController();
+                    compararController.comunicarCoche(choiceModelo1.getSelectionModel().getSelectedItem(),
+                            choiceModelo2.getSelectionModel().getSelectedItem());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Scene scene = new Scene(root, 600, 400);
+                stage.setScene(scene);
+                stage.setTitle("Detalles");
+                stage.show();
+            }
+        });
     }
 
 

@@ -10,10 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.apicoches.DetalleController">
+<BorderPane fx:id="border" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.apicoches.DetalleController">
    <top>
-      <Label fx:id="labelCoche" text="coche" BorderPane.alignment="CENTER">
+      <Label fx:id="labelCoche" BorderPane.alignment="CENTER">
          <font>
             <Font size="36.0" />
          </font>
@@ -98,9 +97,9 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <CheckBox mnemonicParsing="false" text="Financiado">
+            <CheckBox fx:id="checkFinanciado" mnemonicParsing="false" text="Financiado">
                <font>
-                  <Font size="14.0" />
+                  <Font size="15.0" />
                </font>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -108,10 +107,51 @@
             </CheckBox>
             <Button fx:id="btnComprar" alignment="CENTER" mnemonicParsing="false" text="Comprar">
                <VBox.margin>
-                  <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                  <Insets bottom="40.0" left="40.0" right="40.0" top="50.0" />
                </VBox.margin>
+               <font>
+                  <Font size="15.0" />
+               </font>
             </Button>
          </children>
       </VBox>
    </left>
+   <right>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="noFinanciado" prefHeight="350.0" prefWidth="185.0" visible="false">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="405.0" text="Has comprado este coche">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="financiado" prefHeight="350.0" prefWidth="185.0" visible="false">
+               <children>
+                  <Label text="Vas a comprar este coche a:">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="precio">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label text="€ al mes por 5 años">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </right>
 </BorderPane>
