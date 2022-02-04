@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ApiCoches.iml" filepath="$PROJECT_DIR$/ApiCoches.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../Codewars/P01.iml" filepath="$PROJECT_DIR$/../../../Codewars/P01.iml" />
     </modules>
   </component>
 </project>
