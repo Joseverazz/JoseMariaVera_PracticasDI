@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+     crossorigin="anonymous">
+    <title>EJERCICIO 4</title>
+</head>
+<body>
+
+    <div class="contaiener">
+        <label>ROJO </label><input type="range" id="range-r" min="0" max="255"><br>
+        <label>VERDE</label><input type="range" id="range-g" min="0" max="255"><br>
+        <label>AZUL </label><input type="range" id="range-b" min="0" max="255"><br>
+        <p style="width: 400px; height: 400px;" id="paleta"> </p>
+    </div>
+
+<script src="./utils/js/index.js"></script>
+</body>
+</html>
+
+Realiza una aplicación que tenga tres input de tipo range cuyos valores vayan de 0 a 255, un párrafo con un tamaño de 400px 400px y texto que inicialmente aparece en vacío. La funcionalidad de la aplicación será la siguiente:
+
+Cuando uno de los range sea movido se pondrá el color correspondiente al sistema rgb
+Adicionalmente, en el texto se pondrá el valor rgb de los tres range de la siguiente manera RGB : 233 / 241 / 123

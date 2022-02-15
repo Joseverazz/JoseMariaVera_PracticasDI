@@ -5,7 +5,7 @@ botonAgregar.innerText = "Agregar ahora"; //cambias el texto del boton
 let botones = document.getElementsByClassName('btn');
 let inputs = document.getElementsByClassName('input');
 
-//por $nombreID por clase .nombreclase por tag nombretag(sin nada)
+//por #nombreID por clase .nombreclase por tag nombretag(sin nada)
 //el primer elemento que tiene la clase btn
 let botonQuery = document.querySelector('.btn');//solo da el primer elemento
 botonQuery.innerText = "Pulsar nuevo"
@@ -24,33 +24,43 @@ nodoLI.classList.add("list-group-item");
 lista.append(nodoLI);
 
 let btnAgregar = document.querySelector("#boton-agregar");
+let btnBorrar = document.querySelector("#boton-borrar");
 let inputAgregar = document.querySelector('input');
-let check = document.querySelector('#check-activar');
-let contador = document.querySelector('#span-contador');
+let checkActivar = document.querySelector('#check-activar');
+let spancontador = document.querySelector("#span-contador");
+
+checkActivar.addEventListener('click', ()=>{
+    if(checkActivar.checked){
+        inputAgregar.disabled= false;
+    }else{
+        inputAgregar.disabled = true;
+    }
+});
 
 inputAgregar.addEventListener('keyup', ()=>{
-    console.log(inputAgregar.value.length);
-    contador.innerText = inputAgregar.value.length;
+    spancontador.innerText = inputAgregar.value.length //devuelve cuantas veces has pulsado teclas
+})
+
+btnBorrar.addEventListener('click', ()=>{
+   // lista.remove(); //borra todo incluido la lista
+    //lista.innerHTML = ""; //borra todos los li pero deja de lista
+    let listaNodos =  lista.childNodes;
+    /*
+    lista.forEach(element => {
+        lista.removeChild(element);
+    });*/
+    console.log("hiak");
+    lista.removeChild(listaNodos[listaNodos.length-1]);
 })
 
 btnAgregar.addEventListener('click', ()=>{
-    if (check.checked && inputAgregar.value.length == 0) {
+    if(checkActivar.checked && inputAgregar.value.length > 0){
         let valor = inputAgregar.value
-    let nodo = document.createElement('li')
-        nodo.innerText = valor;
-        nodo.classList.add("list-group-item")
-        lista.append(nodo)
-    }
-    else{
-        alert("No se puede agregar");
-    }
-})
-
-check.addEventListener('click', ()=>{
-    if (check.checked) {
-        inputAgregar.removeAttribute("disabled");
-    }
-    else{
-        inputAgregar.setAttribute('disabled',"");
+        let nodo = document.createElement('li')
+         nodo.innerText = valor;
+         nodo.classList.add("list-group-item")
+         lista.append(nodo)
+    }else{
+        alert("no se puede agregar")
     }
 })
