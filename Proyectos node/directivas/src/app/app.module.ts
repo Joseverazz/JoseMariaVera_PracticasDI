@@ -3,14 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InicialComponent } from './components/inicial/inicial.component';
-import { SecundarioComponent } from './components/secundario/secundario.component';
+import { IfComponent } from './components/if/if.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicialComponent,
-    SecundarioComponent
+    IfComponent
   ],
   imports: [
     BrowserModule,
