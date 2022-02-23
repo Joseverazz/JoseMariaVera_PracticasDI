@@ -2,3 +2,17 @@
 <p>
   La directiva if permite mostrar un template u otro dependiendo una condicion
 </p>
+<p>La condicion es {{ mostrar }}</p>
+<button class="btn btn-primary" (click)="mostrar = !mostrar">
+  Cambiar condicion
+</button>
+<ng-container *ngIf="mostrar; else elseTemplate">
+  <div class="alert alert-success" role="alert">
+    La condicion se ha cumplido!
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <div class="alert alert-danger" role="alert">
+    La condicion no se ha cumplido!
+  </div>
+</ng-template>

@@ -1,0 +1,16 @@
+<h2>Directiva For</h2>
+<p>
+  La directiva for sirve para poder repetir un estructura un determinado numero
+  de veces
+</p>
+<ul>
+  <li *ngFor="let item of lenguajes">{{ item }}</li>
+</ul>
+<ul>
+  <li *ngFor="let item of asignaturas">
+    {{ item.asignatura }}
+    <ul>
+      <li *ngFor="let element of item.conocimentos">{{ element }}</li>
+    </ul>
+  </li>
+</ul>

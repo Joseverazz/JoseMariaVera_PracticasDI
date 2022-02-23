@@ -1,0 +1,23 @@
+<h2>Directiva Switch</h2>
+<p>
+  La directiva switch sirve para mostrar un html dependiendo de un valor
+  numerico
+</p>
+<select #select (change)="cambiarOpcion(select.value)">
+  <option value="1">Opcion uno</option>
+  <option value="2">Opcion dos</option>
+  <option value="3">Opcion tres</option>
+</select>
+<button class="btn btn-primary">Mostrar opcion</button>
+<div [ngSwitch]="opcionMostrar">
+  <div class="alert alert-primary" *ngSwitchCase="1">
+    El valor seleccionado es 1
+  </div>
+  <div class="alert alert-danger" *ngSwitchCase="2">
+    El valor seleccionado es 2
+  </div>
+  <div class="alert alert-success" *ngSwitchCase="3">
+    El valor seleccionado es 3
+  </div>
+  <div *ngSwitchDefault>El valor seleccionado no esta en rango</div>
+</div>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IfComponent implements OnInit {
 
+  mostrar: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
