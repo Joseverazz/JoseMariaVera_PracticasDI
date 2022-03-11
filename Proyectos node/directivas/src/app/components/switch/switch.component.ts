@@ -16,4 +16,9 @@ export class SwitchComponent implements OnInit {
   cambiarOpcion(opcion: string) {
     this.opcionMostrar = Number(opcion);
   }
-}
+
+  cambiarOpcionEvento(evento: any) {
+    //console.log(evento.target.value);
+    this.opcionMostrar = Number(evento.target.value)
+  }
+} 

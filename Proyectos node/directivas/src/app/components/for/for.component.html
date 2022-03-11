@@ -3,7 +3,31 @@
   La directiva for sirve para poder repetir un estructura un determinado numero
   de veces
 </p>
-<ul>
+<input #input placeholder="Que curso quieres ver" type="number" />
+<button class="btn btn-primary" (click)="cambiarCurso(input.value)">
+  Filtrar
+</button>
+
+<div class="alert alert-success">
+  El numero de elementos que cumplen el filltro es
+  {{ asignaturasFiltradas.length }}
+</div>
+
+<div class="row">
+  <div class="col" *ngFor="let item of asignaturasFiltradas">
+    <div class="card" style="width: 20rem">
+      <img class="card-img-top" src="..." alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">{{ item.asignatura }}</h5>
+        <ul>
+          <li *ngFor="let element of item.conocimentos">{{ element }}</li>
+        </ul>
+        <h5 class="card-title">{{ item.ciclo }} {{ item.curso }}</h5>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <ul>
   <li *ngFor="let item of lenguajes">{{ item }}</li>
 </ul>
 <ul>
@@ -13,4 +37,4 @@
       <li *ngFor="let element of item.conocimentos">{{ element }}</li>
     </ul>
   </li>
-</ul>
+</ul> -->

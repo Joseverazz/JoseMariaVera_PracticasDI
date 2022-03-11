@@ -3,7 +3,7 @@
   La directiva switch sirve para mostrar un html dependiendo de un valor
   numerico
 </p>
-<select #select (change)="cambiarOpcion(select.value)">
+<select #select (change)="cambiarOpcionEvento($event)">
   <option value="1">Opcion uno</option>
   <option value="2">Opcion dos</option>
   <option value="3">Opcion tres</option>

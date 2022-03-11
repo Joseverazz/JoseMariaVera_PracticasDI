@@ -1,0 +1,32 @@
+<div class="container m4">
+  <h2>Información sobre el curso: {{ curso | uppercase }}</h2>
+  <input type="number" #inputAnio /><button
+    (click)="filtrarAsignaturasAnio(inputAnio.value)"
+  >
+    Filtrar
+  </button>
+
+  <ng-container *ngIf="asignaturasFiltradas.length == 0">
+    <script type="javaScript">
+      alert("No hay ninguna asignatura por lo que se muestran todas");
+    </script>
+  </ng-container>
+
+  <div class="row">
+    <div class="col" *ngFor="let item of asignaturasFiltradas">
+      <div class="card" style="width: 20rem">
+        <img class="card-img-top" [src]="item.imagen | imagen" />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.asignatura | uppercase }}</h5>
+          <ul>
+            <li *ngFor="let element of item.conocimentos">
+              {{ element | lowercase }}
+            </li>
+          </ul>
+          <h5 class="card-title">{{ item.ciclo }} {{ item.curso }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <rutas-cursos entrada="1"></rutas-cursos> -->

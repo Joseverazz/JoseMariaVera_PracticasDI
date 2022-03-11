@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="display 1">Vechiculos</h2>
+  <div class="row">
+    <div class="col" *ngFor="let item of this.coches">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name | uppercase }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Origen: {{ item.origin }} Año: {{ item.year }}
+          </h6>
+          <p class="card-text">
+            Tiene una potencia de {{ item.horsepower }}cv<br />
+            Hace de 0-100 en {{ item.acceleration }} segundos <br />
+            Peso: {{ item.weight_in_lbs | peso }} kg <br />
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
